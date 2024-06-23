@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Spice Conversion</title>
+        <meta charset="utf-8">
+        <meta name="description" content="A tool to convert spice quantities with">
+        <meta name="author" content="Nathan Gurrin-Smith">
+        <meta name="keywords" content="spice,convert,quantity">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.0.0/math.js" integrity="sha512-YwFcgvV5CtE1kAnYDaIfoeydQnjRd/9YvYvi4MtRuFGAYVilHTD8qvvHrI/IJ7umguCooEUfctGo/9EKqdd1OA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="convert.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1 class="heading">Spice Conversion</h1>
+            <hr>
+        </header>
+        <main>
+            <table id="spice-table">
+                <thead>
+                    <tr>
+                        <th>Spice</th>
+                        <th>Measure</th>
+                        <th>Ground Amount</th>
+                        <th>Whole Amount</th>
+                        <th>Cooking Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <script>
+                    addRow();
+                </script>
+            </table>
+            <br>
+            <button onclick="addRow()">Add Row</button>
+            <br>
+            <button onclick="convertWholeToGround()">Convert</button>
+            <h2>References</h2>
+            <p><a href="https://www.epicurious.com/expert-advice/spice-conversion-whole-to-ground-article">How to swap whole spices for ground (and vice versa).</a></p>
+            <p><a href="https://pipingpotcurry.com/cardamom-powder-recipe/">Cardamom powder recipe.</a></p>
+            <p><a href="https://www.chefs-resources.com/culinary-conversions-calculators-and-capacities/dry-spice-yields/">Dry spice yields.</a></p>
+        </main>
+        <footer>
+            <hr/>
+            <p>Progenitor: Nathan Gurrin-Smith</p>
+            <p><a href="www.nathangs.ca">www.nathangs.ca</a></p>
+        </footer>
+    </body>
+</html>
