@@ -23,6 +23,21 @@ var measurementOptions = [
     { value: "tbsp", text: "tbsp" }
 ]
 
+////////////////////////////
+/// CONVERSION FUNCTIONS ///
+////////////////////////////
+function convertGramsToKilograms(value) {
+    return value / 1000;
+}
+
+function convertKilogramsToGrams(value) {
+    return value * 1000;
+}
+
+function convertTspToTbsp(value) {
+    return 0;
+}
+
 function addRow() {
     var table = document.getElementById("spice-table").getElementsByTagName('tbody')[0]
     var newRowNum = table.getElementsByTagName("tr").length + 1
@@ -95,16 +110,24 @@ function addRow() {
 }
 
 // Measurement options
-fractions = [
+const fractions = [
     { value: "0", text: "0" },
+    { value: "1/16", text: "1/16" },
     { value: "1/8", text: "1/8" },
+    { value: "3/16", text: "3/16" },
     { value: "1/4", text: "1/4" },
+    { value: "5/16", text: "5/16" },
     { value: "3/8", text: "3/8" },
+    { value: "7/16", text: "7/16" },
     { value: "1/2", text: "1/2" },
+    { value: "9/16", text: "9/16" },
     { value: "5/8", text: "5/8" },
+    { value: "11/16", text: "11/16" },
     { value: "3/4", text: "3/4" },
-    { value: "7/8", text: "7/8" }
-]
+    { value: "13/16", text: "13/16" },
+    { value: "7/8", text: "7/8" },
+    { value: "15/16", text: "15/16" }
+];
 
 function makeFractionalMeasurements() {
     var fractionSelect = document.createElement("select");
