@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Spice Conversion</title>
+        <meta charset="utf-8">
+        <meta name="description" content="A tool to convert spice quantities with">
+        <meta name="author" content="Nathan Gurrin-Smith">
+        <meta name="keywords" content="spice,convert,quantity">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.0.0/math.js" integrity="sha512-YwFcgvV5CtE1kAnYDaIfoeydQnjRd/9YvYvi4MtRuFGAYVilHTD8qvvHrI/IJ7umguCooEUfctGo/9EKqdd1OA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <script type="text/javascript" src="bundle.js"></script>
+    </head>
+    <body>
+        <header>
+            <div id="header-div">
+                <h1 id="header-text">Spice Conversion</h1>
+                <img id="header-gif" src="lil_guy.gif"/>
+            </div>
+            <hr class="separator"/>
+        </header>
+        <main>
+            <p>
+                Hello! This webpage is a tool I use for converting from ground spices to whole spices so I can grind the precise amounts I need.
+            </p>
+            <table id="spice-table">
+                <thead>
+                    <tr>
+                        <th class="col1">Spice</th>
+                        <th class="col2">Measure</th>
+                        <th class="col3">Ground Amt.</th>
+                        <th class="col4">Whole Amt.</th>
+                        <th class="col5">Convert</th>
+                        <th class="col6">Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <script>
+                    addRow();
+                </script>
+            </table>
+            <br>
+            <div id="global-button-div">
+                <button class="button" onclick="addRow()">Add Row</button>
+                <button class="button" onclick="convertGroundToWholeAll()">Convert All</button>
+            </div>
+            <div id="references">
+                <h2>References</h2>
+                <p>Arora, M. (2024). "Cardamom powder recipe," <i>Piping Pot Curry</i>. <a href="https://pipingpotcurry.com/cardamom-powder-recipe/">link.</a></p>
+                <p>Buchanan, D. (2009). "Dry spice yields," <i>Chef's Resources</i>. <a href="https://www.chefs-resources.com/culinary-conversions-calculators-and-capacities/dry-spice-yields/">link</a></p>
+                <p>Sevier, J. (2020). "How to swap whole spices for ground (and vice versa)," <i>epicurious</i>. <a href="https://www.epicurious.com/expert-advice/spice-conversion-whole-to-ground-article">link</a></p>
+            </div>
+        </main>
+        <footer>
+            <hr class="separator"/>
+            <div id="footer-div">
+                <p>Progenitor: Nathan Gurrin-Smith</p>
+                <p><a href="https://github.com/nathangs6/spice-conversion">source</a></p>
+                <p><a href="https://www.nathangs.ca/index.html?theme=gruvbox">www.nathangs.ca</a></p>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+# Build outputs
+public/bundle.js
+
+# Dependency directories
+node_modules/
