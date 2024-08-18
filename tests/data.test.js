@@ -46,3 +46,13 @@ test('reduced 6/35 is 6/35', () => {
     expect(res.getNum()).toBe(6);
     expect(res.getDen()).toBe(35);
 })
+
+test('15/9 is reduced to 1 6/9', () => {
+    var f = new Fraction(15, 9);
+
+    var expectedWhole = 1;
+    var expectedFrac = new Fraction(6, 9);
+    var [whole, frac] = f.makeMixed();
+    expect(whole).toBe(expectedWhole);
+    expect(frac.equals(expectedFrac)).toBe(true);
+})

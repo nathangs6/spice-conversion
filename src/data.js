@@ -28,7 +28,7 @@ export class Fraction {
         var n = this.getNum();
         var d = this.getDen();
 
-        return [Math.round(n/d), new Fraction(n%d, d)];
+        return [Math.floor(n/d), new Fraction(n%d, d)];
     }
     multiplyByInteger(n) {
         return new Fraction(this.getNum()*n, this.getDen());

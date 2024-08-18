@@ -1,5 +1,5 @@
 import { spiceOptions, measurementOptions, fractionOptions, Fraction } from "../src/data.js";
-import { reduceFraction, addFractionAndInteger, makeMixedFraction, convertGroundToWhole } from "./services.js";
+import { convertGroundToWhole } from "./services.js";
 
 export function fractionToString(fraction) {
     if (fraction.getNum() == 0) {
@@ -9,10 +9,10 @@ export function fractionToString(fraction) {
 }
 
 export function fractionToMixedFractionString(fraction) {
-    var fraction = reduceFraction(fraction);
+    var fraction = fraction.reduce();
     var whole;
     var parts;
-    [whole, parts] = makeMixedFraction(fraction);
+    [whole, parts] = fraction.makeMixed();
     return whole.toString() + " " + fractionToString(parts);
 }
 
@@ -165,7 +165,7 @@ export function convertGroundToWholeRow(i) {
     } else {
         var whole = parseInt(document.getElementById("quantity-"+i+"-whole").value, 10);
         var frac = stringToFraction(document.getElementById("quantity-"+i+"-fraction").value)
-        var quantity = addFractionAndInteger(frac, whole);
+        var quantity = frac.addInteger(whole);
         var quantity_str = fractionToMixedFractionString(convertGroundToWhole(spice, quantity, meas));
     }
     outputQuantity.innerHTML = quantity_str;
