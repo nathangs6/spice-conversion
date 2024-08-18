@@ -1,44 +1,11 @@
-// Table construction
-var spiceOptions = {
-    peppercorn: { value: "peppercorn", text: "Peppercorn", groundToWhole: "1" },
-    allspice: { value: "allspice", text: "Allspice", groundToWhole: "4/3" },
-    juniper: { value: "juniper", text: "Juniper", groundToWhole: "4/3" },
-    cumin: { value: "cumin", text: "Cumin", groundToWhole: "4/3" },
-    caraway: { value: "caraway", text: "Caraway", groundToWhole: "4/3" },
-    fennel: { value: "fennel", text: "Fennel", groundToWhole: "4/3" },
-    mustard: { value: "mustard", text: "Mustard", groundToWhole: "1" },
-    anise_seed: { value: "anise_seed", text: "Anise Seed", groundToWhole: "1" },
-    dill_seed: { value: "dill_seed", text: "Dill Seed", groundToWhole: "1" },
-    celery_seed: { value: "celery_seed", text: "Celery Seed", groundToWhole: "1" },
-    cardamom: { value: "cardamom", text: "Cardamom", groundToWhole: "6", wholeMeasure: "pods" },
-    cloves: { value: "cloves", text: "Clove", groundToWhole: "4/3" },
-    coriander: { value: "coriander", text: "Coriander", groundToWhole: "2" },
-    cinnamon: { value: "cinnamon", text: "Cinnamon", groundToWhole: "3", wholeMeasure: "inch stick" }
-}
-
-var measurementOptions = [
-    { value: "g", text: "g" },
-    { value: "kg", text: "kg" },
-    { value: "tsp", text: "tsp" },
-    { value: "tbsp", text: "tbsp" }
-]
-
+import { Fraction, spiceOptions } from "../src/data.js";
 
 //////////////////////////
 /// FRACTION FUNCTIONS ///
 //////////////////////////
 // Fractions will be of the form a = {num: val, den: val}
-class Fraction {
-    constructor(num, den) {
-        this.num = num;
-        this.den = den;
-    }
-    getNum() {
-        return this.num;
-    }
-    getDen() {
-        return this.den;
-    }
+export function addFractionAndInteger(f, n) {
+    return new Fraction(f.getNum() + f.getDen(), f.getDen())
 }
 
 function multiplyFractionByInteger(fraction, n) {
@@ -49,29 +16,52 @@ function divideFractionByInteger(fraction, n) {
     return new Fraction(fraction.getNum(), fraction.getDen() * n)
 }
 
+function multiplyFractionByFraction(fraction1, fraction2) {
+    return new Fraction(fraction1.getNum()*fraction2.getNum(), fraction1.getDen()*fraction2.getDen())
+}
+
+export function _gcd(a, b) {
+    return b ? _gcd(b, a%b) : a;
+}
+
+export function reduceFraction(f) {
+    var n = f.getNum()
+    var d = f.getDen()
+    var gcd = _gcd(n, d);
+    return new Fraction(Math.floor(n/gcd), Math.floor(d/gcd))
+}
+
+export function makeMixedFraction(f) {
+    var n = f.getNum();
+    var d = f.getDen();
+
+    return [Math.round(n/d), new Fraction(n%d, d)];
+}
+
 ////////////////////////////
 /// CONVERSION FUNCTIONS ///
 ////////////////////////////
-function convertKilogramsToGrams(value) {
+export function convertKilogramsToGrams(value) {
     return value * 1000;
 }
 
-function convertGramsToKilograms(value) {
+export function convertGramsToKilograms(value) {
     return value / 1000;
 }
 
-function convertTbspToTsp(fraction) {
+export function convertTbspToTsp(fraction) {
     return multiplyFractionByInteger(fraction, 3)
 }
 
-function convertTspToTbsp(fraction) {
+export function convertTspToTbsp(fraction) {
     return divideFractionByInteger(fraction, 3)
 }
 
-module.exports = {
-    Fraction,
-    convertGramsToKilograms,
-    convertKilogramsToGrams,
-    convertTbspToTsp,
-    convertTspToTbsp
-};
+export function convertGroundToWhole(spice_str, amount, measure) {
+    if (measure == "g" || measure == "kg") {
+        return amount;
+    }
+    var convert_fraction = spiceOptions[spice_str].groundToWhole
+    var new_value = multiplyFractionByFraction(amount, convert_fraction)
+    return new_value
+}
