@@ -2,6 +2,9 @@ import { spiceOptions, measurementOptions, fractionOptions, Fraction } from "../
 import { reduceFraction, addFractionAndInteger, makeMixedFraction, convertGroundToWhole } from "./services.js";
 
 export function fractionToString(fraction) {
+    if (fraction.getNum() == 0) {
+        return "";
+    }
     return fraction.getNum() + "/" + fraction.getDen();
 }
 
@@ -34,10 +37,12 @@ export function addRow() {
     option.disabled = true;
     option.selected = true;
     select.add(option);
-    for (var i in spiceOptions) {
+    var spiceNames = Object.keys(spiceOptions);
+    spiceNames.sort();
+    for (var i = 0; i < spiceNames.length; i++) {
         var option = document.createElement("option");
-        option.value = spiceOptions[i].value;
-        option.text = spiceOptions[i].text;
+        option.value = spiceOptions[spiceNames[i]].value;
+        option.text = spiceOptions[spiceNames[i]].text;
         select.add(option);
     }
     select.name = "spice-" + newRowNum;
@@ -86,12 +91,13 @@ export function addRow() {
     var newCell = newRow.insertCell(4);
     var button = document.createElement("button");
     button.onclick = () => { convertGroundToWholeRow(newRowNum) };
-    button.innerHTML = "Convert Row";
+    button.innerHTML = "Convert";
+    button.className = "button";
     newCell.appendChild(button);
 
     // Make notes cell
     var newCell = newRow.insertCell(5);
-    var notes = document.createElement("text");
+    var notes = document.createElement("input");
     notes.type = "text";
     newCell.appendChild(notes);
 }
@@ -160,7 +166,6 @@ export function convertGroundToWholeRow(i) {
         var whole = parseInt(document.getElementById("quantity-"+i+"-whole").value, 10);
         var frac = stringToFraction(document.getElementById("quantity-"+i+"-fraction").value)
         var quantity = addFractionAndInteger(frac, whole);
-        console.log(whole);
         var quantity_str = fractionToMixedFractionString(convertGroundToWhole(spice, quantity, meas));
     }
     outputQuantity.innerHTML = quantity_str;

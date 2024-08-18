@@ -113,7 +113,7 @@ export const measurementOptions = [
 ]
 
 export const fractionOptions = [
-    { value: "0", text: "0" },
+    { value: "0/1", text: "0" },
     { value: "1/16", text: "1/16" },
     { value: "1/8", text: "1/8" },
     { value: "3/16", text: "3/16" },
