@@ -1,8 +1,130 @@
+/*******************
+*** PAGE STYLING ***
+*******************/
+html {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: medium;
+    background-color: #fefae0;
+    color: #2b2b2b;
+}
+  
+body {
+    margin: 20px 25%;
+}
+
+footer {
+    text-align: left;
+}
+
+footer .separator {
+    margin-bottom: 0;
+}
+
+footer p {
+    margin-top: 0.2em;
+}
+
+#footer-div {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+/*******************
+*** TEXT STYLING ***
+*******************/
+#header-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+#header-text {
+    align-self: flex-end;
+    font-size: 3em;
+    line-height: 1em;
+    margin: 0;
+}
+
+#header-gif {
+    width: 3em;
+    float: right;
+}
+
+#references h2 {
+    margin-bottom: 0;
+}
+
+#references p {
+    margin: 0;
+}
+
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #8D493A;
+}
+
+/* Buttons */
+.button {
+    background-color: #ca8787;
+    border-radius: 2px;
+    border: none;
+    font-size: 1.1em;
+}
+
+#global-button-div {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+#global-button-div button {
+    font-size: 2em;
+    padding: 0.2em;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+
+#global-button-div button + button {
+    margin-left: 3em;
+}
+
+/* Inputs */
+select {
+    background-color: #c0c78c;
+    border: none;
+}
+input {
+    background-color: #c0c78c;
+    border: none;
+}
+input:focus {
+    outline: none;
+}
+
+
+/********************
+*** TABLE STYLING ***
+********************/
 #spice-table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+    background-color: #c0c78c;
 }
 
-th {
-    width: 10em;
+th.col1, th.col2, th.col3, th.col4, th.col5 {
+    width: 10%;
+}
+th.col6 {
+    width: 40%;
+}
+
+table td:nth-child(5) {
+    text-align: center;
 }
