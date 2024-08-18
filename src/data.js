@@ -1,3 +1,7 @@
+export function _gcd(a, b) {
+    return b ? _gcd(b, a%b) : a;
+}
+
 export class Fraction {
     constructor(num, den) {
         this.num = num;
@@ -8,6 +12,35 @@ export class Fraction {
     }
     getDen() {
         return this.den;
+    }
+    equals(f) {
+        var thisReduced = this.reduce()
+        var fReduced = f.reduce()
+        return thisReduced.getNum() == fReduced.getNum() && thisReduced.getDen() == fReduced.getDen();
+    }
+    reduce() {
+        var n = this.getNum()
+        var d = this.getDen()
+        var gcd = _gcd(n, d);
+        return new Fraction(Math.floor(n/gcd), Math.floor(d/gcd))
+    }
+    makeMixed() {
+        var n = this.getNum();
+        var d = this.getDen();
+
+        return [Math.round(n/d), new Fraction(n%d, d)];
+    }
+    multiplyByInteger(n) {
+        return new Fraction(this.getNum()*n, this.getDen());
+    }
+    divideByInteger(n) {
+        return new Fraction(this.getNum(), this.getDen()*n);
+    }
+    addInteger(n) {
+        return new Fraction(this.getNum() + this.getDen(), this.getDen())
+    }
+    multiplyByFraction(f) {
+        return new Fraction(this.getNum() * f.getNum(), this.getDen() * f.getDen());
     }
 }
 
