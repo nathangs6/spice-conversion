@@ -37,7 +37,7 @@ export class Fraction {
         return new Fraction(this.getNum(), this.getDen()*n);
     }
     addInteger(n) {
-        return new Fraction(this.getNum() + this.getDen(), this.getDen())
+        return new Fraction(this.getNum() + n*this.getDen(), this.getDen())
     }
     multiplyByFraction(f) {
         return new Fraction(this.getNum() * f.getNum(), this.getDen() * f.getDen());
